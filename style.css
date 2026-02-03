@@ -5,101 +5,51 @@
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;     
 }
 
 body {
-  background: #795f80;
-  font-family: Comic Sans MS;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: deeppink;
 }
 
-header {
-  padding: 10px 0;
+#Koko {
+  max-width: 90vw;   
+  max-height: 80vh;  
 }
 
-h1 {
-  margin: 0;
-  font-size: 2.2rem;
+#koko-word {
+  opacity: 0;
+  animation: kokoFadeIn 1.5s ease-out forwards;
 }
 
-h2 {
-  margin: 5px 0 10px;
-  font-size: 1.1rem;
+@keyframes kokoFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-#play-area {
-  position: relative;
-  height: calc(100vh - 110px);
-  overflow: hidden;
+/* Hearts: flip horizontally in place */
+.heart {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: flipHeart 2s linear infinite;
 }
 
-#area {
-  position: relative;
-  width: 100%;
-  height: 100%;
+@keyframes flipHeart {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
 }
 
-#dog {
-  position: absolute;
-  width: 240px;
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%);
+/* K’s bouncing */
+.jump {
+  animation: jumpK 0.8s ease-in-out infinite alternate;
 }
 
-#dog.dog-shake {
-  animation: shake 0.25s ease-in-out;
-}
-
-@keyframes shake {
-  0%   { transform: translate(-50%, -50%) rotate(0deg); }
-  25%  { transform: translate(-50%, -50%) rotate(-5deg); }
-  50%  { transform: translate(-50%, -50%) rotate(5deg); }
-  75%  { transform: translate(-50%, -50%) rotate(-3deg); }
-  100% { transform: translate(-50%, -50%) rotate(0deg); }
-}
-
-.item {
-  position: absolute;
-  width: 85px;
-  bottom: 70px;
-  cursor: pointer;
-}
-
-#ball  { left: 8%; }
-#hand  { left: 28%; }
-#leash { left: 48%; }
-#treat { left: 68%; }
-#sit   { left: 88%; }
-
-#play-area span {
-  position: absolute;
-  bottom: -100px; 
-  border-radius: 50%;
-  pointer-events: none;
-  background: rgba(255,255,255,0.15);
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.8);
-  animation: rise 3.2s linear infinite;
-}
-
-#play-area span::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(#fff, transparent);
-  border-radius: 50%;
-  transform: scale(0.3) translate(-60%, -60%);
-}
-
-@keyframes rise {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-130vh); 
-    opacity: 0;
-  }
+@keyframes jumpK {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-20px); }
 }
