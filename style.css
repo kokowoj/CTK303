@@ -1,55 +1,7 @@
-* {
-  box-sizing: border-box;
-}
-
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;     
 }
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: deeppink;
-}
-
-#Koko {
-  max-width: 90vw;   
-  max-height: 80vh;  
-}
-
-#koko-word {
-  opacity: 0;
-  animation: kokoFadeIn 1.5s ease-out forwards;
-}
-
-@keyframes kokoFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* Hearts: flip horizontally in place */
-.heart {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-  animation: flipHeart 2s linear infinite;
-}
-
-@keyframes flipHeart {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
-}
-
-/* K’s bouncing */
-.jump {
-  animation: jumpK 0.8s ease-in-out infinite alternate;
-}
-
-@keyframes jumpK {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-20px); }
+canvas {
+  display: block;
 }
