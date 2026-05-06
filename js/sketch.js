@@ -1,8 +1,8 @@
 let particles = [];
 
 function drawStar(x, y, radius1, radius2, npoints) {
-  let angle = TWO_PI / npoints;
-  let halfAngle = angle / 2.0;
+  const angle = TWO_PI / npoints;
+  const halfAngle = angle / 2.0;
 
   beginShape();
   for (let a = 0; a < TWO_PI; a += angle) {
@@ -13,8 +13,16 @@ function drawStar(x, y, radius1, radius2, npoints) {
 }
 
 function setup() {
-  let c = createCanvas(window.innerWidth, window.innerHeight);
+  const c = createCanvas(window.innerWidth, window.innerHeight);
+
+  // Attach to body and force full-screen overlay
   c.parent(document.body);
+  c.style('position', 'fixed');
+  c.style('top', '0');
+  c.style('left', '0');
+  c.style('z-index', '9999');
+  c.style('pointer-events', 'none'); // don't block clicks
+
   clear();
   noStroke();
 }
@@ -26,17 +34,21 @@ function windowResized() {
 function draw() {
   clear();
 
+  // spawn particles near the real cursor position
   if (frameCount % 2 === 0) {
-    let colors = [
+    const colors = [
       [255, 255, 255],
       [255, 105, 180],
       [255, 220, 120]
     ];
 
-    let c = random(colors);
-    particles.push(new Particle(mouseX, mouseY, c));
+    const col = random(colors);
+
+    // use window.mouseX/Y to avoid offset issues
+    particles.push(new Particle(window.mouseX, window.mouseY, col));
   }
 
+  // update & draw particles
   for (let i = particles.length - 1; i >= 0; i--) {
     particles[i].update();
     particles[i].display();

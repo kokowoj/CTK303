@@ -98,3 +98,11 @@ img {
   filter: none !important;
   opacity: 1 !important;
 }
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;        
+  pointer-events: none; 
+}
