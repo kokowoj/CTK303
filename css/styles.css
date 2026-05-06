@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "Vividly";
+  src: url("../assets/Vividly-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  font-size: 24px;
+  font-family: "Vividly", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle,
+    rgba(255,200,220,0.8),
+    rgba(163,199,255,0.6),
+    rgba(231,84,128,1));
+  z-index: -1;
+}
+
+.nav-links a {
+  text-decoration: none !important;
+  color: white;
+  margin-left: 20px;
+}
+
+main {
+  flex: 1;
+  padding-bottom: 40px; 
+}
+
+.gallery {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 16px;
+}
+
+img {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.carousel-img {
+  width: 400px;
+  border-radius: 16px;
+}
+
+.nav-btn {
+  font-size: 30px;
+  border: none;
+  background: rgba(255,255,255,0.3);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.site-footer {
+  background: transparent !important;
+  padding: 20px 0;
+  margin-top: auto; /* IMPORTANT fixes extra scroll space */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-text {
+  color: white;
+}
+
+.footer-logo {
+  max-height: 60px;
+  margin-top: 10px;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}

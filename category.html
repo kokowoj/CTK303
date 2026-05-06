@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Category</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<nav class="navbar glass-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Makeup Archive</a>
+
+    <div class="ms-auto nav-links">
+      <a href="category.html?cat=drag">Drag</a>
+      <a href="category.html?cat=soft">Soft Glam</a>
+      <a href="category.html?cat=experimental">Experimental</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container mt-5" id="category-content"></main>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <small class="footer-text">© 2026 Makeup Archive</small>
+    <img src="assets/logo.png" class="footer-logo">
+  </div>
+</footer>
+
+<script>
+const category = new URLSearchParams(window.location.search).get("cat");
+const el = document.getElementById("category-content");
+
+const render = {
+  drag: `
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6"><img src="assets/look5.jpg" class="img-fluid rounded"></div>
+      <div class="col-md-6 text-white">
+        <p>This was my first attempt at drag ever ! It was super exciting to try out
+          this style of makeup, especially installing the lace front wig. For a synthethic wig, it was
+          suprisingly decent quality. I also used the Athena palette to create pink 
+          eyebrows and exaggerated under eye. It was suprisingly very easy to work with and 
+          I look forward to playing around with it more !</p>
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-md-6"><img src="assets/look6.jpg" class="img-fluid rounded"></div>
+      <div class="col-md-6 text-white">
+        <p>The lashes were giving me WAY too many issues. Took them off immediately after getting
+          photos of this look.</p>
+      </div>
+    </div>
+  `,
+
+  soft: `
+    <div class="row align-items-center">
+      <div class="col-md-6"><img src="assets/look7.jpg" class="img-fluid rounded"></div>
+      <div class="col-md-6 text-white">
+        <h3>Soft Glam</h3>
+        <p>This look pulled inspiration from the 60's and is also known as Twiggy makeup !
+          I did end up removing the bottom lashes because the eyeliner I had at the moment ended up drying out. 
+          I would like to redo this makeup in the near future and perfect the lower lash as well as trying out
+          some different colors !</p>
+      </div>
+    </div>
+  `,
+
+  experimental: `
+    <div class="carousel-container">
+      <button class="nav-btn" onclick="prev()">‹</button>
+      <img id="carousel" src="assets/look8.jpg" class="carousel-img">
+      <button class="nav-btn" onclick="next()">›</button>
+    </div>
+
+    <div class="text-center text-white mt-4">
+      <h3>Experimental</h3>
+      <p>I went into this look only knowing I wanted to use the colors red and blue. I had just been gifted a red/burgundy mascara and it worked
+        perfectly with this look ! Next time I used it though, I would either prime my lashes with white mascara or coat false white eyelashes 
+        with this on top for a deeper, more defined eye. Overall, I enjoyed how the eyes turned out ! For my lips I used the blush I used earlier
+        to keep the color scheme consistant. I used the NYX lip pencil in "Evil Genius" to line the lips and the Huda Beauty liquid blush in the shade
+        "Black Cherry".</p>
+    </div>
+  `
+};
+
+el.innerHTML = render[category] || "<p class='text-white'>Category not found</p>";
+
+const images = [
+  "assets/look8.jpg",
+  "assets/look9.jpg",
+  "assets/look10.jpg",
+  "assets/look11.jpg"
+];
+
+let i = 0;
+
+function next() {
+  i = (i + 1) % images.length;
+  document.getElementById("carousel").src = images[i];
+}
+
+function prev() {
+  i = (i - 1 + images.length) % images.length;
+  document.getElementById("carousel").src = images[i];
+}
+</script>
+
+</body>
+</html>
